@@ -68,7 +68,11 @@ const AIChat = () => {
         <div className="flex items-center justify-center h-full">
           <Card className="max-w-sm md:max-w-sm lg:max-w-md p-6 m-6 text-center">
             <p className="text-lg font-medium text-gray-700">
-              Come back after lesson 1 to chat and prepare for your conversations!
+              Welcome to the Know Israel AI chatbot!
+              This chatbot can assist you with your peer conversations on Jews and Israel.
+              Its answers are based on the course content you have been learning.
+              To access the dialog box, just click or tap the yellow dot down here.
+              Then plug in your question or let it inspire you!
             </p>
           </Card>
         </div>
