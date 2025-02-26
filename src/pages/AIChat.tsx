@@ -17,48 +17,92 @@ const AIChat = () => {
 
   useEffect(() => {
     if (location.pathname !== "/ai-chat") return;
+    
 
-    if (window.PICKAXE) {
-      return;
-    }
+    window.PICKAXE = {
+      pickaxes: [{ id: "JLI_KI_L1_OMWIM", type: "fab" }],
+      style: "kHsjoCQGgI0GWASmgIdIAxiDA6wgM6CMbgC4UgDDAXYEAvDIBoGEBgG4CAWQIGYBgwCqApdoEjggjIaCcCoCA9gGzOBUToIQygtAyDw4IGoGgCkxAAC6AQCsAAD4BILgJ6AkV0ALDQAFA+YiAkjEDFLoEEywHkKgMCHAzVmBfPMBUIIAaXQC7ggIDFAilWBXGkAmVIFVJQMYiAMEBBEoCF6QBJcgBREA7IAAaoAXEYCuQYBCNIAMWIAIIgBKgAAIgED6gAB6gEjwgCEcgCQRgCoJgC5pgAAhgDJugDYJgD87gK4lgEtQgBZBgHxCgHYQgC0pgACDgG5qgD1zgHtBgAl/gDoYgIJJgIuHgI9hgJQjgHEZgJs5gH15gKNNgFRVgImrgGNfgBVngJm5gEV3gC+hgEwqgA2kgAxIgFAUgM3dAOIAM4BY4ICIXC6AQAuAiBeAYBiACAyAUISAAWCABR6AXiiAULGAAHDAAAUgAKUwDCNQAgQDo0oAGEQAKIANCkAXMyAAIRAC9AgEAEQBEmYAmcUAcGiAVDjAAEhgAtFQBkJYB0bkAjxGASSRAFMmgAyDQCAA4AOI0AFQ2ANijAKxMgBLUQCNJ4APx0AlnuAOIJACVSgFERQBMIIAYKkAgbCAaULAASbgB9NQA55YAVKUAqgGAAKDAJDYgBuJQADQYAGhsAGCiAXAtAA+XgFFqQCJu4ASZkAwUQAQEAD5CAAChAAaMgGsJwCXC4BwIMAChCAYDRAECQgBhcQAUCIAbNUAVAWAK+hAC+DgAAEwAAioA6gkAbO6AQmNABYBgAK/wAFC4BaIEAgBKAcCZAKPQgHBTwD3c4BYPEAvmGAKMvAJGkgAx0QDq9YBxa0AVDKAeSzAIYqgGMxQCkoIBwWMAY1GAE+JAFqsgEFcwBOIoAEscAEAyABEFABoZgBw/QDi8YB140ATyKAOYNAHLjgHfzQBEBIADScAYQyAXE7ACEEgAATQBjWIAjUMAiK6AR8BN4ArrWAGT1gAImoACVeAMFYgAQhYAeDCAJOlgCC/oARuKAP4DgDD8IALWSANIQgBmSYAbxmAHncgAUhoAAAFAA=="
+    };
 
+    const { id: _fid } = window.PICKAXE.pickaxes[0];
 
-    window.PICKAXE = { pickaxes: [], style: "kHsjoCQGgI0GWASmgIdIAxiDA6wgM6CMbgC4UgDDAXYEAvDIBoGEBgG4CAWQIGYBgwCqApdoEjggjIaCcCoCA9gGzOBUToIQygtAyDw4IGoGgCkxAAC6AQCsAAD4BILgJ6AkV0ALDQAFA+ZiAkjEDFLoEEywHkKgMCHAzVmBfPMBUIIAaXQC7ggIDFAilWBXGkAmVIFVJQAAigADFAFGCB6IMBcQoBEJQAAKgGrsABOAQRmANK6AWEKAIgyAAAiACEoA+oB6QADwgB5IgBEjgAkmgGksgCEwAG6ACTSAPTiAJUGAUq6AQU2AQhaAEHyAK3iAgy8AaoB1cIBDP4CBfYAYCYBJPICJhIBjjYAjkYAbloA7c4B7nYBPf4BVpYCtVoBhi4BpZYC7F4B5m4CjR4AqL4CmTIBIDYAUDIDfUoAAzYAA4oDgM4C4sIABEIAWwIAugIAxEIAYwIAIGIDAoYA8AoBQCoAxYEAwqGAFCCAFKANQVAAGEgFpAQBF0YAADEAKFCATBpABC5gEABQCQXoBFGMAmcaAcGhAJDigAEhwAvFYBoJUA8ciATxHACWRgFUnwCCDIBABEAOM2AFQ1ANiigDRQQBLUYANJ0AQR6AGntAAIJgGVywAARIAvNEAMFaAQNhANKFgAJNwA+moAk8sAKlKAVQDAIlBgE3HQCBoIADQ0ADRSAcAXABfTgCjFQBFXYAKM0AYKIAIEAR8iAABRAIFGgHGCwDLdYA38EABQiAMBpABBIgAweQAKBIBOGsAKgSAVexAJfhgAACQAARYAbQUANm+AYTGAIuAQF9AAKtgA0QQBAA4B380A0OeAeSnAGu9gEwOQDesIAUZUATNKANjJAPU6gDj1QCqGYBAlkAAxWAcVjANNQgHgsQAxqIAKAUAEwiAXK1ABKGgDGnQAMCYBBCEAGQiALwVAHD4gGLxQAe7IADI8Ao3OAMvlAATvgEWgQAL9oBuwMABLiAExCAFiAULHAK4GgECEQCCkIArViABWugCaZYAWAiAOMfgACEYAsAaAMJ4gBQX4AaN2AN+wgCZfYAMpSADqOgAwyoAzfOANA7gAilAAAEAA===" };
-    window.PICKAXE.pickaxes.push({ id: "JLI_KI_L1_OMWIM", type: "fab" });
+    fetch(`https://embed.pickaxeproject.com/axe/api/script/${_fid}`)
+      .then((res) => res.json())
+      .then(({ v }) => {
+        const scriptUrl = `https://cdn.jsdelivr.net/gh/pickaxeproject/cdn@${v}/dist/bundle.js`;
 
-    const scriptUrl = "https://cdn.jsdelivr.net/gh/pickaxeproject/cdn@latest/dist/bundle.js";
-
-
-    if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
-      const script = document.createElement("script");
-      script.src = scriptUrl;
-      script.defer = true;
-      script.id = "pickaxe-bundle";
-      document.head.appendChild(script);
-    }
+        if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+          const script = document.createElement("script");
+          script.src = scriptUrl;
+          script.defer = true;
+          script.id = "pickaxe-bundle";
+          document.head.appendChild(script);
+        }
+      });
 
     return () => {
-
-
-      document.getElementById("pickaxe-bundle")?.remove();
-
-
-      document.querySelectorAll("iframe").forEach((iframe) => {
-        if (iframe.src.includes("pickaxeproject")) {
-          iframe.remove();
+      document.querySelectorAll("#pickaxe-bundle, iframe, div").forEach((el) => {
+        if (
+          el.tagName === "IFRAME" &&
+          (el as HTMLIFrameElement).src.includes("pickaxeproject")
+        ) {
+          el.remove();
+        }
+        if (el.id.includes("pickaxe")) {
+          el.remove();
         }
       });
-
-
-      document.querySelectorAll("div").forEach((div) => {
-        if (div.id.includes("pickaxe")) {
-          div.remove();
-        }
-      });
-
-
       delete window.PICKAXE;
     };
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== "/ai-chat") return;
+  
+    const style = document.createElement("style");
+    style.innerHTML = `
+      #pickaxe-inline-JLI_KI_L1_OMWIM button {
+        font-family: "Arial", sans-serif !important;
+        font-size: 16px !important;
+        color: #282723 !important;
+        background-color: #FFE94A !important;
+        border-radius: 8px !important;
+        padding: 10px 15px !important;
+        border: none !important;
+      }
+  
+      #pickaxe-inline-JLI_KI_L1_OMWIM button:hover {
+        background-color: #F4D32F !important;
+      }
+    `;
+  
+    document.head.appendChild(style);
+  
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
+    if (location.pathname !== "/ai-chat") return;
+
+    const applyCustomStyles = () => {
+      const buttons = document.querySelectorAll(
+        "#pickaxe-inline-JLI_KI_L1_OMWIM button"
+      );
+      buttons.forEach((btn) => {
+        const button = btn as HTMLButtonElement;
+        button.style.fontFamily = "Arial, sans-serif";
+        button.style.fontSize = "16px";
+        button.style.color = "#282723";
+        button.style.backgroundColor = "#FFE94A";
+        button.style.borderRadius = "8px";
+        button.style.padding = "10px 15px";
+        button.style.border = "none";
+      });
+    };
+
+    setTimeout(applyCustomStyles, 3000);
   }, [location.pathname]);
 
   return (
@@ -68,14 +112,15 @@ const AIChat = () => {
         <div className="flex items-center justify-center h-full">
           <Card className="max-w-sm md:max-w-sm lg:max-w-md p-6 m-6 text-center">
             <p className="text-lg font-medium text-gray-700">
-              Welcome to the Know Israel AI chatbot!
-              This chatbot can assist you with your peer conversations on Jews and Israel.
-              Its answers are based on the course content you have been learning.
-              To access the dialog box, just click or tap the yellow dot down here.
-              Then plug in your question or let it inspire you!
+              Welcome to the Know Israel AI chatbot! This chatbot can assist you
+              with your peer conversations on Jews and Israel. Its answers are
+              based on the course content you have been learning. To access the
+              dialog box, just click or tap the yellow dot down here. Then plug
+              in your question or let it inspire you!
             </p>
           </Card>
         </div>
+        <div id="pickaxe-inline-JLI_KI_L1_OMWIM"></div>
       </div>
     </div>
   );
