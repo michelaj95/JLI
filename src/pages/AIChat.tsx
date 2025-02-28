@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavigationBar from "@/components/navigation/NavigationBar";
-import { Card } from "@/components/ui/card";
 
 declare global {
   interface Window {
@@ -61,20 +60,35 @@ const AIChat = () => {
   
     const style = document.createElement("style");
     style.innerHTML = `
-      #pickaxe-inline-JLI_KI_L1_OMWIM button {
-        font-family: "Arial", sans-serif !important;
-        font-size: 16px !important;
-        color: #282723 !important;
-        background-color: #FFE94A !important;
-        border-radius: 8px !important;
-        padding: 10px 15px !important;
-        border: none !important;
-      }
-  
-      #pickaxe-inline-JLI_KI_L1_OMWIM button:hover {
-        background-color: #F4D32F !important;
-      }
-    `;
+    #pickaxe-inline-JLI_KI_L1_OMWIM {
+      position: absolute;
+      top: 64px;
+      bottom: 64px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: calc(100vh - 128px);
+    }
+
+     .pxe-relative.pxe-top-0.pxe-flex.pxe-w-full {
+      height: 100% !important;
+    }
+
+    #pickaxe-inline-JLI_KI_L1_OMWIM button {
+      font-family: "Arial", sans-serif !important;
+      font-size: 16px !important;
+      color: #282723 !important;
+      background-color: #FFE94A !important;
+      border-radius: 8px !important;
+      padding: 10px 15px !important;
+      border: none !important;
+    }
+
+    #pickaxe-inline-JLI_KI_L1_OMWIM button:hover {
+      background-color: #F4D32F !important;
+    }
+  `;
+
   
     document.head.appendChild(style);
   
@@ -106,7 +120,7 @@ const AIChat = () => {
   }, [location.pathname]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-blue-50">
+    <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-purple-50 via-white to-blue-50">
       <NavigationBar />
       <div className="h-[calc(100vh-64px)] pt-16">
         <div id="pickaxe-inline-JLI_KI_L1_OMWIM"></div>
