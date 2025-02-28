@@ -67,7 +67,7 @@ const AIChat = () => {
       left: 0;
       right: 0;
       width: 100%;
-      height: 100%;
+      height: calc(100% - 64px);
     }
 
      .pxe-relative.pxe-top-0.pxe-flex.pxe-w-full {
