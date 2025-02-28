@@ -67,11 +67,11 @@ const AIChat = () => {
       left: 0;
       right: 0;
       width: 100%;
-      height: calc(100% - 128px);
+      height: 100%;
     }
 
      .pxe-relative.pxe-top-0.pxe-flex.pxe-w-full {
-      height: calc(100% - 128px) !important;
+      height: 100%!important;
     }
 
     #pickaxe-inline-JLI_KI_L1_OMWIM button {
